@@ -6,11 +6,12 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     [SerializeField] private Transform gun;
-    [SerializeField] private float gunDistance = 1.2f;
-    private bool gunFacingRight = true;
+    [SerializeField] private float gunDistance = 0f;
     [Header("Bullet")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
+    private float shootTimer = 0f; // Timer to track shooting interval
+    private float shootInterval = 0.75f; // Time interval for shooting downwards
     void Update()
     {
         // Get the mouse position in world space
@@ -24,15 +25,27 @@ public class GunController : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         gun.position = transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(gunDistance, 0, 0);
 
-        // Shoot bullets towards the north direction (upwards)
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Shoot(Vector3.up); // Change direction to Vector3.up for shooting upwards
+
+        if (transform.name=="playerplane"){
+            // Shoot bullets towards the north direction (upwards)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Shoot(Vector3.up); // Change direction to Vector3.up for shooting upwards
+            }
+        }
+        else{
+            // Update the shoot timer
+            shootTimer += Time.deltaTime;
+            // Check if enough time has passed to shoot downwards
+            if (shootTimer >= shootInterval)
+            {
+                Shoot(Vector3.down); // Change direction to Vector3.down for shooting downwards
+                shootTimer = 0f; // Reset the timer after shooting
+            }
         }
     }
 
     public void Shoot(Vector3 direction){
-
         GameObject newBullet = Instantiate(bulletPrefab, gun.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * bulletSpeed;
         Destroy(newBullet,1);
