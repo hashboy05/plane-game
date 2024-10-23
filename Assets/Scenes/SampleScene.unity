@@ -152,9 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdca7529b4a2f342a18eb9f144b5a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cd: {fileID: 455202576}
   targetPrefab: {fileID: 2348708674858142514, guid: 02d0b79e98fa9bb4083bac5cd3d5fdaa, type: 3}
-  cooldown: 5
+  cooldown: 7
 --- !u!61 &455202576
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -605,7 +604,7 @@ MonoBehaviour:
   gun: {fileID: 687737184}
   gunDistance: 0
   bulletPrefab: {fileID: 6306573781156758656, guid: f9d45e422a0fb874e90efb5690ac4826, type: 3}
-  bulletSpeed: 15
+  bulletSpeed: 12
 --- !u!1 &1901246822
 GameObject:
   m_ObjectHideFlags: 0

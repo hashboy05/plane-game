@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1568785011479718937}
   - component: {fileID: 8611669466818565335}
   - component: {fileID: 6501589963693453978}
+  - component: {fileID: -9081454812604995146}
   m_Layer: 0
   m_Name: enemy1
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +260,19 @@ MonoBehaviour:
   gun: {fileID: 7647056334381438787}
   gunDistance: 0
   bulletPrefab: {fileID: 6306573781156758656, guid: f9d45e422a0fb874e90efb5690ac4826, type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 8
+--- !u!114 &-9081454812604995146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813458044957621758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdfe58d264ba4f46aa8f6a9ae0f2232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7209248392069840781
 GameObject:
   m_ObjectHideFlags: 0

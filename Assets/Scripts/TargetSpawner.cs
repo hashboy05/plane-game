@@ -6,7 +6,6 @@ using UnityEngine;
 public class TargetSpawner : MonoBehaviour
 {
     // [SerializeField] private Sprite[] targetSprite;
-    [SerializeField] private BoxCollider2D cd;
     [SerializeField] private GameObject targetPrefab;
     [SerializeField] private float cooldown;
     private float timer;
@@ -17,10 +16,16 @@ public class TargetSpawner : MonoBehaviour
         if (timer < 0){
             timer = cooldown;
             GameObject newTarget = Instantiate(targetPrefab);
-            // float randomX = Random.Range(cd.bounds.min.x, cd.bounds.max.x);
+            // Check for children in targetPrefab
+            if (newTarget.transform.childCount > 0)
+            {
+                // Iterate through each child and add to the dictionary
+                foreach (Transform child in newTarget.transform)
+                {
+                    Damage.planes.Add(child.gameObject, 100); // Add each child to the dictionary
+                }
+            }
             newTarget.transform.position = new Vector2(0, transform.position.y);
-            // int randomIndex = Random.Range(0, targetSprite.Length);
-            // newTarget.GetComponent<SpriteRenderer>().sprite = targetSprite[randomIndex];
         }
     }
 }

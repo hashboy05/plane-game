@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GunController : MonoBehaviour
@@ -11,7 +8,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
     private float shootTimer = 0f; // Timer to track shooting interval
-    private float shootInterval = 0.75f; // Time interval for shooting downwards
+    private float shootInterval = 1f; // Time interval for shooting downwards
     void Update()
     {
         // Get the mouse position in world space
@@ -23,10 +20,15 @@ public class GunController : MonoBehaviour
 
         // Calculate the angle to position the gun
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        gun.position = transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(gunDistance, 0, 0);
+        // gun.position = transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(gunDistance, 0, 0);
 
 
         if (transform.name=="playerplane"){
+            // Lower the y position by 4
+            Vector3 loweredPosition = new(transform.position.x, transform.position.y + 1, transform.position.z);
+
+            // Calculate the gun's position
+            gun.position = loweredPosition + Quaternion.Euler(0, 0, angle) * new Vector3(gunDistance, 0, 0);
             // Shoot bullets towards the north direction (upwards)
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -34,6 +36,11 @@ public class GunController : MonoBehaviour
             }
         }
         else{
+            // Lower the y position by 4
+            Vector3 loweredPosition = new(transform.position.x, transform.position.y - 1, transform.position.z);
+
+            // Calculate the gun's position
+            gun.position = loweredPosition + Quaternion.Euler(0, 0, angle) * new Vector3(gunDistance, 0, 0);
             // Update the shoot timer
             shootTimer += Time.deltaTime;
             // Check if enough time has passed to shoot downwards
