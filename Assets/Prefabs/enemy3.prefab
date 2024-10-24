@@ -241,7 +241,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 15
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 4193365076009520221}
   gunDistance: 0
-  bulletPrefab: {fileID: 6306573781156758656, guid: f9d45e422a0fb874e90efb5690ac4826, type: 3}
+  bulletPrefab: {fileID: 6306573781156758656, guid: 3f11e354f55bf41498563c1404cad22d, type: 3}
   bulletSpeed: 8
 --- !u!114 &-523699609047992541
 MonoBehaviour:
